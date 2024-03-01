@@ -9,7 +9,7 @@ public partial class Todo
 
     public string Task { get; set; } = null!; // "= null!" This randomly created when I scaffolded the database. I am not sure we should leave it or not
 
-    public string? DueDate { get; set; }
+    public DateTime? DueDate { get; set; }
 
     public string Quadrant { get; set; } = null!;
 
