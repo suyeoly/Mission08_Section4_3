@@ -5,5 +5,9 @@
         List<Todo> Todos { get; }
 
         public void AddTodo(Todo todo);
+        public void RemoveTodo(Todo todo);
+        public void UpdateTodo(Todo todo);
+        public void GetIncompleteTodosWithCategory();
+        public void ToggleCompletionStatus(int taskId);
     }
 }

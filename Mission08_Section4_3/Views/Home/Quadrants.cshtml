@@ -1,4 +1,4 @@
-﻿@model List<Todos> 
+﻿@model List<Todo> 
 
 <h2>Task List</h2>
 
@@ -16,7 +16,7 @@
             {
                 <div>
                     @task.Task
-                    Due: @task.Due_Date
+                    Due: @task.DueDate
                     <form method="post" action="@Url.Action("CompletionStatus", "Home")">
                         <input type="hidden" name="taskId" value="@task.TaskId" />
                         <button type="submit" class="btn btn-success">✔</button>
