@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Todo
+
+<div class="container text-center">
+    <h2>Welcome to the Task Manager App!</h2>
+
+    <p>This app is designed to help you manage your tasks effectively by using Stephen Covey's Time Management Matrix. You can categorize your tasks into four quadrants based on urgency and importance, prioritize them, and plan your work accordingly. This method allows you to focus on what's truly important, rather than just what's urgent.</p>
+
+    <img src="~/img/covey.jpg" alt="Stephen Covey's Time Management Matrix" class="img-responsive" />
+    <h3>How to use the matrix:</h3>
+</div>
+<div style="margin-left: auto; margin-right: auto; max-width: 60%;">
+    <ul class ="list-unstyled">
+        <li><strong>Quadrant 1:</strong> Tasks that are both urgent and important. Do these tasks as soon as possible.</li>
+        <li><strong>Quadrant 2:</strong> Tasks that are important but not urgent. Schedule time to do these tasks.</li>
+        <li><strong>Quadrant 3:</strong> Tasks that are urgent but not important. Delegate these if possible.</li>
+        <li><strong>Quadrant 4:</strong> Tasks that are neither urgent nor important. Limit these activities to increase productivity.</li>
+    </ul>
+</div>
+<div class="container text-center">
+    <p>Start by adding your tasks using the 'Create New Task' button and categorize them into the appropriate quadrant. This will help you stay organized and on track with your priorities. Happy planning!</p>
+
+    <a asp-controller="Home" asp-action="Create" class="btn btn-primary">Create New Task</a>
+</div>
