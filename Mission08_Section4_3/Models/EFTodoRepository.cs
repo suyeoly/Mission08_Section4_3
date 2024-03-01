@@ -31,17 +31,25 @@ namespace Mission08_Section4_3.Models
         }
 
         // Make up Classes ***I am not sure about these below
-        public void GetIncompleteTodosWithCategory()   
+
+        public List<Todo> GetIncompleteTodosWithCategory()   
         {
-            var tasks = _context.Todos.Include(t => t.Category)
-                .Where(t => t.Completed == 0)
-                .ToList();
+            return _context.Todos.Where(t => t.Completed == 0).ToList();
         }
-        public Todo GetTodoById(Todo taskId)
+        public  Todo GetTodoById(int taskId)
         {
-            return _context.Todos
+            var todo = _context.Todos
                 .FirstOrDefault(t => t.TaskId == taskId);
+
+            if (todo == null)
+            {
+                throw new InvalidOperationException($"No Todo found with ID {taskId}.");
+            }
+
+            return todo;
         }
+
+  
         public void ToggleCompletionStatus(int taskId)
         {
             var task = _context.Todos.FirstOrDefault(t => t.TaskId == taskId);
@@ -49,7 +57,6 @@ namespace Mission08_Section4_3.Models
             {
                 task.Completed = task.Completed == 0 ? 1 : 0;
                 _context.SaveChanges();
-                return RedirectToAction("Quadrants");
             }
         }
     }

@@ -7,7 +7,8 @@
         public void AddTodo(Todo todo);
         public void RemoveTodo(Todo todo);
         public void UpdateTodo(Todo todo);
-        public void GetIncompleteTodosWithCategory();
+        List<Todo> GetIncompleteTodosWithCategory();
+        public Todo GetTodoById(int taskId);
         public void ToggleCompletionStatus(int taskId);
     }
 }

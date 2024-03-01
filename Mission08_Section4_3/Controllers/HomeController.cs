@@ -39,18 +39,22 @@ namespace Mission08_Section4_3.Controllers
         //Quadrants 
         public IActionResult Quadrants()
         {
-            _repo.GetIncompleteTodosWithCategory(); // Not sure about this
+            var tasks = _repo.GetIncompleteTodosWithCategory() ?? new List<Todo>(); // Ensure it's never null
 
-            return View();
+            return View(tasks);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recordToEdit = _context.Todos
-                .Single(x => x.TaskId == id);
-            ViewBag.Category = _context.Category.ToList();
+            var recordToEdit = _repo.GetTodoById(id);
+            if (recordToEdit == null)
+            {
+                return NotFound();
+            }
+       
             return View("Create", recordToEdit);
+
         }
 
         [HttpPost]
@@ -65,22 +69,17 @@ namespace Mission08_Section4_3.Controllers
         {
             _repo.ToggleCompletionStatus(taskId);
 
-            var task = _context.Todos.FirstOrDefault(t => t.TaskId == taskId);
-            if (task != null)
-            {
-                task.Completed = !task.Completed; // Toggle the completion status
-                _context.SaveChanges();
-                return RedirectToAction("Quadrants");
-            }
-            return NotFound();
+ 
+            return RedirectToAction("Quadrants");
+   
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var recordToDelete = _context.Todos
-                .Single(x => x.TaskId == id);
-            return View(recordToDelete);
+            var recordToDelete = _repo.GetTodoById(id);
+            if (recordToDelete == null) return NotFound();
+            return RedirectToAction("Quadrants");
         }
 
         [HttpPost]

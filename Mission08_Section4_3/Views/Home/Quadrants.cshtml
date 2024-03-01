@@ -2,7 +2,7 @@
 
 <h2>Task List</h2>
 
-@if (Model.Any()) // Checks if there are any tasks to display
+@if (Model != null && Model.Any()) // Checks if there are any tasks to display
 {
 <table class="table">
     <tr>
