@@ -74,12 +74,11 @@ namespace Mission08_Section4_3.Controllers
    
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             var recordToDelete = _repo.GetTodoById(id);
-            if (recordToDelete == null) return NotFound();
-            return RedirectToAction("Quadrants");
+            return View(recordToDelete);
         }
 
         [HttpPost]
