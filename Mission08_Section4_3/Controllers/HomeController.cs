@@ -74,7 +74,7 @@ namespace Mission08_Section4_3.Controllers
    
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             var recordToDelete = _repo.GetTodoById(id);
