@@ -1,92 +1,105 @@
-﻿@model List<Todo> 
+﻿@model List<Todo>
 
-<h2>Task List</h2>
+<h2 class="mb-4">Task List</h2>
 
 @if (Model != null && Model.Any()) // Checks if there are any tasks to display
 {
-<table class="table">
-    <tr>
-        <th>Important / Urgent</th>
-        <th>Important / Not Urgent</th>
-    </tr>
-    <tr>
-        <td>
-            <!-- Quadrant 1: Important / Urgent -->
-            @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant1"))
-            {
-                <div>
-                    @task.Task
-                    Due: @task.DueDate
-                    <form method="post" action="@Url.Action("CompletionStatus", "Home")">
-                        <input type="hidden" name="taskId" value="@task.TaskId" />
-                        <button type="submit" class="btn btn-success">✔</button>
-                    </form>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
-                </div>
-            }
-        </td>
-        <td>
-            <!-- Quadrant 2: Important / Not Urgent -->
-            @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant2"))
-            {
-                <div>
-                    @task.Task
-                        Due: @task.DueDate
-                    <!-- Buttons for actions -->
-                    <form method="post" action="@Url.Action("CompletionStatus", "Home")">
-                        <input type="hidden" name="taskId" value="@task.TaskId" />
-                        <button type="submit" class="btn btn-success">✔</button>
-                    </form>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
-                </div>
-            }
-        </td>
-    </tr>
-    <tr>
-        <th>Not Important / Urgent</th>
-        <th>Not Important / Not Urgent</th>
-    </tr>
-    <tr>
-        <td>
-            <!-- Quadrant 3: Not Important / Urgent -->
-            @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant3"))
-            {
-                <div>
-                    @task.Task
-                        Due: @task.DueDate
-                    <!-- Buttons for actions -->
-                    <form method="post" action="@Url.Action("CompletionStatus", "Home")">
-                        <input type="hidden" name="taskId" value="@task.TaskId" />
-                        <button type="submit" class="btn btn-success">✔</button>
-                    </form>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
-                </div>
-            }
-        </td>
-        <td>
-            <!-- Quadrant 4: Not Important / Not Urgent -->
-            @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant4"))
-            {
-                <div>
-                    @task.Task
-                        Due: @task.DueDate
-                    <!-- Buttons for actions -->
-                    <form method="post" action="@Url.Action("CompletionStatus", "Home")">
-                        <input type="hidden" name="taskId" value="@task.TaskId" />
-                        <button type="submit" class="btn btn-success">✔</button>
-                    </form>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
-                </div>
-            }
-        </td>
-    </tr>
-</table>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Important / Urgent</th>
+                        <th>Important / Not Urgent</th>
+                        <th>Not Important / Urgent</th>
+                        <th>Not Important / Not Urgent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- Quadrant 1: Important / Urgent -->
+                            @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant1"))
+                            {
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@task.Task</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Due: @task.DueDate</h6>
+                                        <form method="post" action="@Url.Action("CompletionStatus", "Home")" class="d-inline">
+                                                <input type="hidden" name="taskId" value="@task.TaskId" />
+                                            <button type="submit" class="btn btn-success btn-sm">✔</button>
+                                            </form>
+                                            <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                                            <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                                        </div>
+                                   </div>
+       
+                            }
+                        </td>
+                        <td>
+                            <!-- Quadrant 2: Important / Not Urgent -->
+                        @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant2"))
+                        {
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@task.Task</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Due: @task.DueDate</h6>
+                                        <form method="post" action="@Url.Action("CompletionStatus", "Home")" class="d-inline">
+                                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                                            <button type="submit" class="btn btn-success btn-sm">✔</button>
+                                        </form>
+                                        <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                                        <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                                    </div>
+                                </div>
+                        }
+                    </td>
+
+
+                    <td>
+                        <!-- Quadrant 3: Not Important / Urgent -->
+                        @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant3"))
+                        {
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@task.Task</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Due: @task.DueDate</h6>
+                                        <form method="post" action="@Url.Action("CompletionStatus", "Home")" class="d-inline">
+                                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                                            <button type="submit" class="btn btn-success btn-sm">✔</button>
+                                        </form>
+                                        <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                                        <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                                    </div>
+                                </div>
+                        }
+                    </td>
+                    <td>
+                        <!-- Quadrant 4: Not Important / Not Urgent -->
+                        @foreach (var task in Model.Where(t => t.Quadrant == "Quadrant4"))
+                        {
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@task.Task</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Due: @task.DueDate</h6>
+                                        <form method="post" action="@Url.Action("CompletionStatus", "Home")" class="d-inline">
+                                            <input type="hidden" name="taskId" value="@task.TaskId" />
+                                            <button type="submit" class="btn btn-success btn-sm">✔</button>
+                                        </form>
+                                        <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">✎</a>
+                                        <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">🗑</a>
+                                    </div>
+                                </div>
+                        }
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 }
 else
 {
-    <p>No tasks to display.</p>
+    <div class="alert alert-info" role="alert">No Tasks to display </div>
 }
