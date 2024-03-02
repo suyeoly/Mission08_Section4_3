@@ -6,40 +6,52 @@
             <input type="hidden" asp-for="TaskId" />
             <input type="hidden" asp-for="Completed" value="0" />
 
-            <!-- Task -->
-            <div class="form-group">
-                <label asp-for="Task" class="form-label">Task:</label>
-                <input asp-for="Task" class="form-control" placeholder="Enter task" required />
-                <div class="invalid-feedback">Please enter a task.</div>
+            <div class="row">
+                <!-- Task -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Task" class="form-label">Task:</label>
+                        <input asp-for="Task" class="form-control" placeholder="Enter task" required />
+                        <div class="invalid-feedback">Please enter a task.</div>
+                    </div>
+                </div>
+
+                <!-- Date -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DueDate" class="form-label">Due Date:</label>
+                        <input asp-for="DueDate" type="datetime-local" class="form-control" required />
+                        <div class="invalid-feedback">Please select a due date.</div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Date -->
-            <div class="form-group">
-                <label asp-for="DueDate" class="form-label">Due Date:</label>
-                <input asp-for="DueDate" type="datetime-local" class="form-control" required />
-                <div class="invalid-feedback">Please select a due date.</div>
-            </div>
+            <div class="row">
+                <!-- Quadrant -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Quadrant" class="form-label">Quadrant:</label>
+                        <select asp-for="Quadrant" class="form-select" required>
+                            <option value="Quadrant1">Urgent/Important</option>
+                            <option value="Quadrant2">Not Urgent/Important</option>
+                            <option value="Quadrant3">Urgent/Not Important</option>
+                            <option value="Quadrant4">Not Urgent/Not Important</option>
+                        </select>
+                    </div>
+                </div>
 
-            <!-- Quadrant -->
-            <div class="form-group">
-                <label asp-for="Quadrant" class="form-label">Quadrant:</label>
-                <select asp-for="Quadrant" class="form-select" required>
-                    <option value="Quadrant1">Urgent/Important</option>
-                    <option value="Quadrant2">Not Urgent/Important</option>
-                    <option value="Quadrant3">Urgent/Not Important</option>
-                    <option value="Quadrant4">Not Urgent/Not Important</option>
-                </select>
-            </div>
-
-            <!-- Category -->
-            <div class="form-group">
-                <label asp-for="CategoryId" class="form-label">Category:</label>
-                <select asp-for="CategoryId" class="form-select">
-                    <option value="1">Home</option>
-                    <option value="2">School</option>
-                    <option value="3">Work</option>
-                    <option value="4">Church</option>
-                </select>
+                <!-- Category -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CategoryId" class="form-label">Category:</label>
+                        <select asp-for="CategoryId" class="form-select">
+                            <option value="1">Home</option>
+                            <option value="2">School</option>
+                            <option value="3">Work</option>
+                            <option value="4">Church</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <!-- Submit Button -->
