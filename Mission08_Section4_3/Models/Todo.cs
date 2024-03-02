@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission08_Section4_3.Models;
 
@@ -12,8 +13,8 @@ public partial class Todo
     public DateTime? DueDate { get; set; }
 
     public string Quadrant { get; set; } = null!;
-
-    public string? Category { get; set; }
+    [ForeignKey("CategoryId")]
+    public string? CategoryId { get; set; }
 
     public int Completed { get; set; }
 }
