@@ -32,6 +32,7 @@
             {
                 <div>
                     @task.Task
+                        Due: @task.DueDate
                     <!-- Buttons for actions -->
                     <form method="post" action="@Url.Action("CompletionStatus", "Home")">
                         <input type="hidden" name="taskId" value="@task.TaskId" />
@@ -54,6 +55,7 @@
             {
                 <div>
                     @task.Task
+                        Due: @task.DueDate
                     <!-- Buttons for actions -->
                     <form method="post" action="@Url.Action("CompletionStatus", "Home")">
                         <input type="hidden" name="taskId" value="@task.TaskId" />
@@ -70,6 +72,7 @@
             {
                 <div>
                     @task.Task
+                        Due: @task.DueDate
                     <!-- Buttons for actions -->
                     <form method="post" action="@Url.Action("CompletionStatus", "Home")">
                         <input type="hidden" name="taskId" value="@task.TaskId" />
